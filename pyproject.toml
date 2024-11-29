@@ -1,0 +1,61 @@
+[project]
+name = "whispergg"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jonathan Fox"}
+]
+requires-python = "<3.13,>=3.10"
+
+dependencies = [
+    "ctc-forced-aligner",
+    "faster-whisper>=1.1.0",
+    "pandas>=2.2.3",
+    "pysoundfile>=0.9.0.post1",
+    "soundfile>=0.12.1",
+    "sox>=1.5.0", # pandas can be dropped after testing, just in here because I imported the gogogadget utils module
+    "torch>=2.5.1",
+    "torchaudio>=2.5.1",
+    "typer>=0.14.0",
+]
+classifiers = [
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.scripts]
+whispergg = "whispergg.main:app"
+
+[tool.uv.sources]
+ctc-forced-aligner = { git = "https://github.com/jonathanfox5/ctc-forced-aligner" }
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.mypy]
+disable_error_code = "import-untyped"
+
+[tool.ruff]
+line-length = 100
+indent-width = 4
+target-version = "py310"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+
